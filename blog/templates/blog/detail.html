@@ -1,0 +1,33 @@
+{% load static %}
+{% load humanize %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/detail.css' %}">
+
+<ul>
+	<li><b><a id="header" class="home" href="/blog">theBlog</a></b></li>
+	<li><a href="">Categories</a></li>
+	<li><a href="{% url 'blog:profile' %}">Go to Profile</a></li>
+</ul>
+
+<div class="leftside">
+	<h2>{{ article.title }}</h2>
+	<p>By: {{ article.author }}</p>
+	<p style="font-weight: 100;">{{ article.date }}</p>
+	<p>{{ article.content }}</p>
+
+	<form action="/blog/{{ article.id }}/" method='post'>
+	{% csrf_token %}
+	{{ form.author }}<br>
+	{{ form.reply }}<br>
+	<button type='submit'>post comment</button>
+	</form>
+
+	<h4>Comments:</h4>
+	{% for comment in comments %}
+		<div style="padding-left: 10px; padding-right: 10px;">
+			<p id="author">{{ comment.author }}<span style="font-weight:100; font-size:13px; color:black;"> - {{ comment.date|naturaltime }}<br>{{ comment.reply }}<span/></p>
+			
+		</div>
+	{% empty %}
+		<p>No comments here: </p>
+	{% endfor %}
+</div>

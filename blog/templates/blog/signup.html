@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+	<ul>
+		<li><b><a id="header" class="home" href="/blog">theBlog</a></b></li>
+		<li><a href="">Categories</a></li>
+	</ul>
+	<div class="grid-container">
+		</div class="grid">
+			<h2>Sign up</h2>
+		</div>
+		<form method="post">
+		  {% csrf_token %}
+		  {% for field in form %}
+		      <div class="grid text-blur">
+		      	{{ field.label_tag }}<br>
+		      </div>
+		      <div class="grid">
+		        {{ field }}
+		      </div>
+	        {% if field.help_text %}
+	          <small style="color: grey">{{ field.help_text }}</small>
+	        {% endif %}
+	        {% for error in field.errors %}
+	          <p style="color: red">{{ error }}</p>
+	        {% endfor %}
+	      </p>
+	    {% endfor %}
+
+	    <button class="button" style="background-color:#FFD166; color:#000;" type="submit">Sign up</button>
+		</form>
+		<div class="grid">
+			<br>
+			If you already have an account <a href="/blog/login"><strong>login</strong></a> instead.
+		</div>
+	</div>
+
+{% endblock %}

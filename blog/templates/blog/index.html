@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+
+<ul>
+	<li><b><a id="header" class="home" href="/blog">theBlog</a></b></li>
+	<li><a href="">Categories</a></li>
+	
+	{% if user.is_authenticated %}
+		<li><a href="{% url 'blog:profile' %}">Go to Profile</a></li>
+		<li><a href="{% url 'blog:logout' %}">Logout</a></li>
+	{% else %}
+		<li><a href="{% url 'blog:login' %}">Login</a></li>
+	{% endif %}
+</ul>
+<div class = "grid-container">
+	{% for article in articles %}
+		<div class="grid">
+			<h2><a id="normal" class="article" href="{% url 'blog:detail' article.id %}">{{ article.title }}</a></h2>
+			<p3>{{ article.content|truncatechars:100 }}</p3>
+		</div>
+{% endfor %}
+</div>
+
+
+</body>
+</html>

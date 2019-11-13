@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+	<ul>
+		<li><b><a id="header" class="home" href="/blog">theBlog</a></b></li>
+		<li><a href="">Categories</a></li>
+	</ul>
+	<div class="grid-container">
+		<div class="grid">
+			<h2>Login</h2>
+		</div>
+	  	<form method="post">
+			{% csrf_token %}
+			<div class="grid">
+		    	<label class="text-blur">Username:</label>
+		    </div>
+		    <div class="grid">
+		    	<input type="text" class="form-control" placeholder="Username" name="username" value>
+		    </div>
+
+		    <div class="grid">
+		    	<label class="text-blur">Password:</label>
+		    </div>
+		    <div class="grid">
+		    	<input type="password" class="form-control" placeholder="Password" name="password" value>
+		    </div>
+		    <div class="grid">		
+		    	<button style="background-color:#FFD166; color:#000;" class="button" type="submit">Login</button>
+		    </div>
+	  	</form>
+		<div class="grid">
+			<br>
+			Don't have an account? <a href="/blog/signup"><strong>register here</strong></a>
+		</div>
+	</div>
+ 
+{% endblock %}

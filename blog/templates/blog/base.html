@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}TheBlog{% endblock %}</title>
+</head>
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/login.css' %}">
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>
