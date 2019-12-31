@@ -1,6 +1,7 @@
 # Interactive-Blog
 
 This is a blog that allows registered users to post contents on contemporary and anachronistic issues.
+(Root Folder - https://github.com/qudusG/Interactive-Blog?files=1)
 
 Views.py - This code processes web requests and returns it as response on the web page. 
 
